@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoire du MC Starter-Club - Club de motards Loison-sous-Lens</title>
+    <meta name="description" content="Découvrez l'histoire passionnante du MC Starter-Club de Loison-sous-Lens, club de motards fondé sur la camaraderie et la passion de la route">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --border-color: #e2e8f0;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu a[aria-current="page"] {
+            background: var(--secondary-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu a:hover::before {
+            left: 100%;
+        }
+
+        .menu a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-medium);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .histoire-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: var(--shadow-heavy);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .histoire-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.05), transparent);
+            transform: rotate(-45deg);
+            animation: shimmer 10s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(-45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(-45deg); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .histoire-container h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .histoire-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .story-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 20px;
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .story-section:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .story-section h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .story-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .story-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.2) 100%);
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .story-section,
+        .timeline-item,
+        .value-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .story-section:nth-child(1) { animation-delay: 0.1s; }
+        .story-section:nth-child(2) { animation-delay: 0.2s; }
+        .story-section:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .histoire-container {
+                padding: 2rem;
+            }
+
+            .histoire-container h2 {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding: 1.5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .histoire-container {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .story-section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .story-section,
+            .timeline-item,
+            .value-card {
+                animation: none;
+            }
+        }
+
+        .story-section:focus,
+        .timeline-item:focus,
+        .value-card:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav role="navigation" aria-label="Navigation principale">
+        <ul class="menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html" aria-current="page">Histoire du MC Starterclub</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e74c3c'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='0.35em' fill='white' font-family='Arial' font-size='20' font-weight='bold'%3EMC%3C/text%3E%3C/svg%3E" alt="Logo du MC Starter-Club" class="logo">
+            <h1>Histoire du MC Starter-Club</h1>
+            <p class="subtitle">Une passion, une histoire, une communauté</p>
+        </div>
+    </header>
+
+    <main>
+        <article class="histoire-container" role="main">
+            <div class="content">
+                <h2>Notre Histoire</h2>
+
+                <section class="story-section" tabindex="0">
+                    <h3><span class="story-icon">🏍️</span>Les Origines</h3>
+                    <p>Le MC Starterclub de Loison-sous-Lens est née de la <span class="highlight">passion commune</span> d'un groupe d'amis motards qui partageaient le même rêve : créer une communauté basée sur l'entraide, la camaraderie et l'amour de la moto.</p>
+                    <p>Fondé par des passionnés pour des passionnés, notre club s'est développé organiquement, attirant des motards de tous horizons unis par une même vision : <span class="highlight">vivre pleinement la culture moto</span> dans un esprit de fraternité et de respect mutuel.</p>
+                </section>
+
+                <section class="timeline">
+                    <div class="timeline-item" tabindex="0">
+                        <div class="timeline-date">Années Fondatrices</div>
+                        <div class="timeline-title">La Naissance du Club</div>
+                        <p>Création officielle du MC Starterclub avec les premiers membres fondateurs. Établissement des valeurs fondamentales du club : respect, solidarité, et passion de la moto.</p>
+                    </div>
+
+                    <div class="timeline-item" tabindex="0">
+                        <div class="timeline-date">Développement</div>
+                        <div class="timeline-title">Croissance de la Communauté</div>
+                        <p>Expansion progressive du club avec l'arrivée de nouveaux membres partageant les mêmes valeurs. Organisation des premières sorties collectives et événements.</p>
+                    </div>
+
+                    <div class="timeline-item" tabindex="0">
+                        <div class="timeline-date">Aujourd'hui</div>
+                        <div class="timeline-title">Une Famille Unie</div>
+                        <p>Le club compte aujourd'hui une vingtaine de membres actifs, formant une véritable famille unie par la passion des deux-roues et l'esprit de camaraderie.</p>
+                    </div>
+                </section>
+
+                <section class="story-section" tabindex="0">
+                    <h3><span class="story-icon">🤝</span>Notre Philosophie</h3>
+                    <p>Au MC Starterclub, nous croyons que la moto est bien plus qu'un simple moyen de transport : c'est un <span class="highlight">art de vivre</span>, une façon de découvrir le monde et de créer des liens durables.</p>
+                    <p>Notre club privilégie les valeurs humaines avant tout. Que vous rouliez sur une sportive, un roadster, une trail ou un custom, ce qui compte, c'est votre passion et votre respect des autres membres de notre communauté.</p>
+                </section>
+
+                <div class="values-grid">
+                    <div class="value-card" tabindex="0">
+                        <div class="value-icon">🛡️</div>
+                        <div class="value-title">Sécurité</div>
+                        <p>La sécurité de nos membres est notre priorité absolue lors de toutes nos sorties et activités.</p>
+                    </div>
+
+                    <div class="value-card" tabindex="0">
+                        <div class="value-icon">❤️</div>
+                        <div class="value-title">Fraternité</div>
+                        <p>Une véritable famille où l'entraide et la solidarité sont au cœur de nos relations.</p>
+                    </div>
+
+                    <div class="value-card" tabindex="0">
+                        <div class="value-icon">🌟</div>
+                        <div class="value-title">Passion</div>
+                        <p>L'amour de la moto sous toutes ses formes unit tous les membres de notre communauté.</p>
+                    </div>
+
+                    <div class="value-card" tabindex="0">
+                        <div class="value-icon">🤲</div>
+                        <div class="value-title">Respect</div>
+                        <p>Le respect mutuel, de la route et de notre environnement guide toutes nos actions.</p>
+                    </div>
+                </div>
+
+                <section class="story-section" tabindex="0">
+                    <h3><span class="story-icon">🛣️</span>Nos Aventures</h3>
+                    <p>Notre histoire est remplie d'<span class="highlight">aventures mémorables</span>, de kilomètres parcourus ensemble, de paysages découverts et de moments de partage inoubliables. Chaque sortie est une nouvelle page qui s'écrit dans le grand livre de notre club.</p>
+                    <p>Des balades dominicales aux grands voyages, en passant par les événements motards régionaux, nous cultivons ensemble cette passion qui nous unit et nous permet de créer des souvenirs qui durent toute une vie.</p>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Intersection Observer pour les animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.story-section, .timeline-item, .value-card').forEach(element => {
+            element.style.animationPlayState = 'paused';
+            observer.observe(element);
+        });
+
+        // Améliorer l'accessibilité avec le clavier
+        document.querySelectorAll('[tabindex="0"]').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    element.focus();
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez le MC Starter-Club - Club de motards Loison-sous-Lens</title>
+    <meta name="description" content="Contactez le MC Starter-Club de Loison-sous-Lens. Rejoignez notre communauté de motards passionnés dans le Nord-Pas-de-Calais">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --border-color: #e2e8f0;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu a[aria-current="page"] {
+            background: var(--secondary-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu a:hover::before {
+            left: 100%;
+        }
+
+        .menu a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-medium);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.05), transparent);
+            transform: rotate(-45deg);
+            animation: shimmer 10s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(-45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(-45deg); }
+        }
+
+        .form-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Info Section */
+        .contact-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow-heavy);
+            height: fit-content;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-info h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .info-item {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 20px;
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .info-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .info-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: var(--shadow-heavy);
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .map-section h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .map-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .map-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0%);
+        }
+
+        .location-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .location-image:hover {
+            transform: scale(1.02);
+        }
+
+        .address-card {
+            background: rgba(248, 250, 252, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .address-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .address-card p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, var(--success-color), #2ecc71);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(52, 152, 219, 0.3);
+            border-top: 3px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-form-container,
+        .contact-info,
+        .map-section {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .contact-form-container { animation-delay: 0.1s; }
+        .contact-info { animation-delay: 0.2s; }
+        .map-section { animation-delay: 0.3s; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form-container,
+            .contact-info,
+            .map-section {
+                padding: 2rem;
+            }
+
+            .contact-form h2,
+            .contact-info h2,
+            .map-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .contact-form-container,
+            .contact-info,
+            .map-section {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .contact-form-container,
+            .contact-info,
+            .map-section {
+                animation: none;
+            }
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav role="navigation" aria-label="Navigation principale">
+        <ul class="menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="histoire.html">Histoire du MC Starterclub</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23e74c3c'/%3E%3Ctext x='50' y='50' text-anchor='middle' dy='0.35em' fill='white' font-family='Arial' font-size='20' font-weight='bold'%3EMC%3C/text%3E%3C/svg%3E" alt="Logo du MC Starter-Club" class="logo">
+            <h1>Contactez-nous</h1>
+            <p class="subtitle">Rejoignez notre communauté de passionnés</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-grid">
+            <section class="contact-form-container">
+                <div class="form-content">
+                    <div class="success-message" id="successMessage">
+                        ✅ Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                    </div>
+                    
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <h2>Nous écrire</h2>
+                        
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required aria-describedby="nameError">
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Adresse email *</label>
+                            <input type="email" id="email" name="email" required aria-describedby="emailError">
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet de votre message *</label>
+                            <select id="subject" name="subject" required aria-describedby="subjectError">
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="adhesion">Demande d'adhésion</option>
+                                <option value="info">Demande d'informations</option>
+                                <option value="sortie">Participation à une sortie</option>
+                                <option value="evenement">Organisation d'événement</option>
+                                <option value="partenariat">Partenariat</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                            <div class="error-message" id="subjectError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre message *</label>
+                            <textarea id="message" name="message" required placeholder="Décrivez votre demande, vos questions ou présentez-vous..." aria-describedby="messageError"></textarea>
+                            <div class="error-message" id="messageError"></div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="contact-info">
+                <h2>Informations</h2>
+                
+                <div class="info-item">
+                    <h3><span class="info-icon">👤</span> Responsables</h3>
+                    <p><strong>Président :</strong> Pascal MARCQ<br>
+                    <strong>Vice-Président :</strong> Benoit DEBREU</p>
+                </div>
+
+                <div class="info-item">
+                    <h3><span class="info-icon">📧</span> Email</h3>
+                    <p><a href="mailto:contact@mcstarterclub.fr">contact@mcstarterclub.fr</a></p>
+                </div>
+
+                <div class="info-item">
+                    <h3><span class="info-icon">📱</span> Téléphone</h3>
+                    <p><a href="tel:+33611572053">06 11 57 20 53</a> (Pascal)<br>
+                    <a href="tel:+33684151040">06 84 15 10 40</a> (Benoit)</p>
+                </div>
+
+                <div class="info-item">
+                    <h3><span class="info-icon">⏰</span> Disponibilité</h3>
+                    <p>Réponse sous 48h en semaine<br>
+                    Sorties généralement le week-end</p>
+                </div>
+
+                <div class="info-item">
+                    <h3><span class="info-icon">🏍️</span> Adhésion</h3>
+                    <p>Ouvert à tous les motards<br>
+                    Toutes marques et cylindrées<br>
+                    Esprit familial et convivial</p>
+                </div>
+            </section>
+        </div>
+
+        <section class="map-section">
+            <h2>Notre emplacement</h2>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d653.8047383853345!2d2.847561087176479!3d50.445405696056085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd31afa8ac9435%3A0x5b9f48b29f9d1087!2s118%20Rue%20Georges%20Devouges%2C%2062218%20Loison-sous-Lens!5e0!3m2!1sfr!2sfr!4v1732304646481!5m2!1sfr!2sfr"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Localisation du MC Starter-Club à Loison-sous-Lens">
+                </iframe>
+            </div>
+
+            <div class="address-card">
+                <h3>📍 Salle Coluche</h3>
+                <p>118 Rue Georges Devouges<br>
+                62218 Loison-sous-Lens<br>
+                Nord-Pas-de-Calais, France</p>
+            </div>
+
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'%3E%3Crect width='600' height='300' fill='%23e2e8f0'/%3E%3Ctext x='300' y='150' text-anchor='middle' dy='0.35em' fill='%234a5568' font-family='Arial' font-size='24'%3ESalle Coluche%3C/text%3E%3C/svg%3E" 
+                 alt="Photo de la Salle Coluche" 
+                 class="location-image"
+                 loading="lazy">
+        </section>
+    </main>
+
+    <script>
+        // Form validation and submission
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Validation functions
+        const validators = {
+            name: (value) => {
+                if (!value.trim()) return 'Le nom est requis';
+                if (value.trim().length < 2) return 'Le nom doit contenir au moins 2 caractères';
+                return null;
+            },
+            email: (value) => {
+                if (!value.trim()) return 'L\'email est requis';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) return 'Veuillez entrer une adresse email valide';
+                return null;
+            },
+            subject: (value) => {
+                if (!value) return 'Veuillez sélectionner un sujet';
+                return null;
+            },
+            message: (value) => {
+                if (!value.trim()) return 'Le message est requis';
+                if (value.trim().length < 10) return 'Le message doit contenir au moins 10 caractères';
+                return null;
+            }
+        };
+
+        // Real-time validation
+        Object.keys(validators).forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(`${fieldName}Error`);
+            
+            field.addEventListener('blur', () => validateField(fieldName));
+            field.addEventListener('input', () => {
+                if (errorElement.textContent) validateField(fieldName);
+            });
+        });
+
+        function validateField(fieldName) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(`${fieldName}Error`);
+            const error = validators[fieldName](field.value);
+            
+            if (error) {
+                errorElement.textContent = error;
+                errorElement.style.color = 'var(--accent-color)';
+                errorElement.style.fontSize = '0.875rem';
+                errorElement.style.marginTop = '0.5rem';
+                field.style.borderColor = 'var(--accent-color)';
+                return false;
+            } else {
+                errorElement.textContent = '';
+                field.style.borderColor = 'var(--success-color)';
+                return true;
+            }
+        }
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isValid = true;
+            Object.keys(validators).forEach(fieldName => {
+                if (!validateField(fieldName)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) return;
+            
+            // Add loading state
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.classList.add('loading');
+            
+            // Simulate form submission (replace with actual form handling)
+            try {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Show success message
+                successMessage.classList.add('show');
+                form.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+                
+            } catch (error) {
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.classList.remove('loading');
+                
+                // Reset field styling
+                Object.keys(validators).forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    field.style.borderColor = 'var(--border-color)';
+                });
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.contact-form-container, .contact-info, .map-section').forEach(element => {
+            element.style.animationPlayState = 'paused';
+            observer.observe(element);
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = value.replace(/(\d{2})(?=\d)/g, '$1 ');
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
