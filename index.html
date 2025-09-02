@@ -96,8 +96,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
             color: white;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
+            padding: 4rem 2rem 2rem;
             margin-top: 70px;
             position: relative;
             overflow: hidden;
@@ -119,6 +118,11 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            text-align: left;
         }
 
         .logo {
@@ -129,18 +133,23 @@
             min-width: 80px !important;
             min-height: 80px !important;
             border-radius: 50%;
-            rotate: 90deg;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             box-shadow: var(--shadow-medium);
             border: 3px solid rgba(255, 255, 255, 0.3);
             object-fit: cover;
             display: block;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
         }
 
         header h1 {
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -152,7 +161,7 @@
 
         /* Main Content */
         main {
-            padding: 4rem 2rem;
+            padding: 2rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -161,7 +170,7 @@
             text-align: center;
             font-size: 2.5rem;
             color: white;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-weight: 600;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
@@ -332,7 +341,17 @@
             }
 
             header {
-                padding: 6rem 1rem 3rem;
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .header-text {
+                align-items: center;
             }
 
             header h1 {
@@ -345,7 +364,7 @@
             }
 
             main {
-                padding: 2rem 1rem;
+                padding: 1.5rem 1rem;
             }
 
             .section-title {
@@ -410,9 +429,11 @@
 
     <header>
         <div class="header-content">
-            <div class="card-content">                       
-            <h1><img src="images/Logo.jpg" alt="Logo du MC Starter-Club" class="logo">MC Starter-Club</h1>
-            <p class="subtitle">Club de motards de Loison-sous-Lens</p>
+            <img src="images/Logo.png" alt="Logo du MC Starter-Club" class="logo">
+            <div class="header-text">
+                <h1>MC Starter-Club</h1>
+                <p class="subtitle">Club de motards de Loison-sous-Lens</p>
+            </div>
         </div>
     </header>
 
@@ -624,4 +645,3 @@
     </script>
 </body>
 </html>
-
