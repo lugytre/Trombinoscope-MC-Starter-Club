@@ -185,6 +185,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            min-height: inherit;
             transform-style: preserve-3d;
             transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -197,19 +198,22 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            min-height: inherit;
             backface-visibility: hidden;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-heavy);
             background: var(--card-background);
+            top: 0;
+            left: 0;
         }
 
         .face.avant {
             display: flex;
             flex-direction: column;
             background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            min-height: 400px;
-            height: auto;
+            position: relative;
+            z-index: 2;
         }
 
         .face.arriere {
@@ -221,8 +225,8 @@
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            min-height: 400px;
-            height: auto;
+            position: absolute;
+            z-index: 1;
         }
 
         .membre img {
@@ -567,6 +571,36 @@
                 }
             });
         });
+
+        // Fonction pour ajuster la hauteur des cartes dynamiquement
+        function adjustCardHeights() {
+            document.querySelectorAll('.membre').forEach(membre => {
+                const avant = membre.querySelector('.face.avant');
+                const arriere = membre.querySelector('.face.arriere');
+                
+                // Calculer la hauteur nécessaire pour la face avant
+                avant.style.height = 'auto';
+                const avantHeight = avant.scrollHeight;
+                
+                // Calculer la hauteur nécessaire pour la face arrière
+                arriere.style.height = 'auto';
+                const arriereHeight = arriere.scrollHeight;
+                
+                // Prendre la plus grande des deux hauteurs
+                const maxHeight = Math.max(avantHeight, arriereHeight, 400);
+                
+                // Appliquer cette hauteur aux éléments
+                membre.style.height = maxHeight + 'px';
+                avant.style.height = maxHeight + 'px';
+                arriere.style.height = maxHeight + 'px';
+            });
+        }
+
+        // Ajuster les hauteurs après le chargement des images
+        window.addEventListener('load', adjustCardHeights);
+        
+        // Réajuster sur redimensionnement
+        window.addEventListener('resize', adjustCardHeights);
 
         // Intersection Observer pour les animations
         const observerOptions = {
